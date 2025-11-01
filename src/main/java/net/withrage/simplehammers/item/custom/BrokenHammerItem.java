@@ -10,6 +10,21 @@ public class BrokenHammerItem extends Item {
     }
 
     @Override
+    public boolean isItemBarVisible(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getItemBarStep(ItemStack stack) {
+        return 13;
+    }
+
+    @Override
+    public int getItemBarColor(ItemStack stack) {
+        return 0xFF0000;
+    }
+
+    @Override
     public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
         return 0.0F;
     }
