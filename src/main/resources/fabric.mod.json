@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "simplehammers",
+	"version": "${version}",
+	"name": "Simple Hammers",
+	"description": "Mine faster and wider with Simple Hammers that break 3x3 areas of blocks at once.",
+	"authors": [
+		"JustErikSK, Satorisek, With Rage Studios"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/ -> CHANGE THIS ONE BEFORE RELEASE",
+		"sources": "https://github.com/FabricMC/fabric-example-mod -> CHANGE THIS ONE BEFORE RELEASE"
+	},
+	"license": "MIT",
+	"icon": "assets/simplehammers/simplehammers-icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.withrage.simplehammers.SimpleHammers"
+		],
+		"fabric-datagen": [
+			"net.withrage.simplehammers.SimpleHammersDataGenerator"
+		]
+	},
+	"mixins": [
+		"simplehammers.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.3",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
