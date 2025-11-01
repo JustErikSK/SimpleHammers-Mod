@@ -40,7 +40,6 @@ public class HammerItem extends MiningToolItem {
         }
     }
 
-    @Override
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, PlayerEntity player) {
         boolean result = super.postMine(stack, world, state, pos, player);
 
@@ -52,7 +51,6 @@ public class HammerItem extends MiningToolItem {
         return result;
     }
 
-    @Override
     public boolean postHit(ItemStack stack, LivingEntity target, PlayerEntity attacker) {
         boolean result = super.postHit(stack, target, attacker);
 
