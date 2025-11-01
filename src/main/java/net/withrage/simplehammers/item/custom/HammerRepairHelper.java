@@ -9,33 +9,34 @@ import java.util.Map;
 
 public class HammerRepairHelper {
 
-    public record RepairRule(Item repairedItem, Item repairMaterial, TagKey<Item> repairTag) {}
+    public record RepairRule(Item repairedItem, Item repairMaterialItem, TagKey<Item> repairMaterialTag) {
+    }
 
-    private static final Map<Item, RepairRule> REPAIR_RULES = new HashMap<>();
+    private static final Map<Item, RepairRule> RULES = new HashMap<>();
 
-    public static void register(Item brokenHammer, Item repairedHammer, Item repairMat) {
-        REPAIR_RULES.put(brokenHammer, new RepairRule(repairedHammer, repairMat, null));
+    public static void register(Item brokenHammer, Item repairedHammer, Item repairItem) {
+        RULES.put(brokenHammer, new RepairRule(repairedHammer, repairItem, null));
     }
 
     public static void register(Item brokenHammer, Item repairedHammer, TagKey<Item> repairTag) {
-        REPAIR_RULES.put(brokenHammer, new RepairRule(repairedHammer, null, repairTag));
+        RULES.put(brokenHammer, new RepairRule(repairedHammer, null, repairTag));
     }
 
     public static RepairRule getRule(Item brokenHammerItem) {
-        return REPAIR_RULES.get(brokenHammerItem);
+        return RULES.get(brokenHammerItem);
     }
 
-    public static boolean matchesRepairMaterial(RepairRule rule, ItemStack inputStack) {
-        if (rule == null || inputStack.isEmpty()) return false;
+    public static boolean matchesRepairMaterial(RepairRule rule, ItemStack stack) {
+        if (stack.isEmpty()) return true;
 
-        if (rule.repairMaterial != null && inputStack.isOf(rule.repairMaterial)) {
-            return true;
+        if (rule.repairMaterialItem() != null) {
+            return !stack.isOf(rule.repairMaterialItem());
         }
 
-        if (rule.repairTag != null && inputStack.isIn(rule.repairTag)) {
-            return true;
+        if (rule.repairMaterialTag() != null) {
+            return !stack.isIn(rule.repairMaterialTag());
         }
 
-        return false;
+        return true;
     }
 }

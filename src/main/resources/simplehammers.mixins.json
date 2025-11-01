@@ -2,7 +2,6 @@
 	"required": true,
 	"package": "net.withrage.simplehammers.mixin",
 	"compatibilityLevel": "JAVA_17",
-    "refmap": "simplehammers.refmap.json",
 	"mixins": [
 		"AnvilScreenHandlerMixin"
 	],

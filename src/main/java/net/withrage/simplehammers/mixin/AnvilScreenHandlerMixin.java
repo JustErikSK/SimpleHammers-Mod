@@ -15,6 +15,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AnvilScreenHandler.class)
 public abstract class AnvilScreenHandlerMixin {
 
+    static {
+        System.out.println("[SimpleHammers] AnvilScreenHandlerMixin class loaded!");
+    }
+
     @Shadow private String newItemName;
 
     @Inject(method = "onTakeOutput", at = @At("HEAD"), cancellable = true)
@@ -23,6 +27,8 @@ public abstract class AnvilScreenHandlerMixin {
             ItemStack vanillaOutput,
             CallbackInfo ci
     ) {
+        System.out.println("[SimpleHammers] onTakeOutput BEGIN");
+
         AnvilScreenHandler self = (AnvilScreenHandler)(Object)this;
 
         Slot leftSlot = self.getSlot(0);
@@ -41,7 +47,7 @@ public abstract class AnvilScreenHandlerMixin {
             return;
         }
 
-        if (!HammerRepairHelper.matchesRepairMaterial(rule, matStack)) {
+        if (HammerRepairHelper.matchesRepairMaterial(rule, matStack)) {
             return;
         }
 

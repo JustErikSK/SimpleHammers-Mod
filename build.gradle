@@ -47,12 +47,6 @@ java {
 	targetCompatibility = JavaVersion.VERSION_17
 }
 
-loom {
-    mixin {
-        defaultRefmapName = "simplehammers.refmap.json"
-    }
-}
-
 jar {
 	inputs.property "archivesName", project.base.archivesName
 

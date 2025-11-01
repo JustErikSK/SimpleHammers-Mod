@@ -32,7 +32,7 @@ public class HammerAnvilLogic {
             return null;
         }
 
-        if (!HammerRepairHelper.matchesRepairMaterial(rule, right)) {
+        if (HammerRepairHelper.matchesRepairMaterial(rule, right)) {
             return null;
         }
 
