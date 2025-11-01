@@ -8,5 +8,14 @@
   "item.simplehammers.diamond_hammer": "Diamond Hammer",
   "item.simplehammers.netherite_hammer": "Netherite Hammer",
 
+  "item.simplehammers.broken_wooden_hammer": "Broken Wooden Hammer",
+  "item.simplehammers.broken_stone_hammer": "Broken Stone Hammer",
+  "item.simplehammers.broken_copper_hammer": "Broken Copper Hammer",
+  "item.simplehammers.broken_golden_hammer": "Broken Golden Hammer",
+  "item.simplehammers.broken_iron_hammer": "Broken Iron Hammer",
+  "item.simplehammers.broken_emerald_hammer": "Broken Emerald Hammer",
+  "item.simplehammers.broken_diamond_hammer": "Broken Diamond Hammer",
+  "item.simplehammers.broken_netherite_hammer": "Broken Netherite Hammer",
+
   "itemgroup.simplehammers": "Simple Hammers"
 }
