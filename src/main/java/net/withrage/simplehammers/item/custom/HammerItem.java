@@ -58,8 +58,6 @@ public class HammerItem extends MiningToolItem {
                             BlockPos pos,
                             LivingEntity miner) {
 
-        boolean result = super.postMine(stack, world, state, pos, miner);
-
         if (!world.isClient && miner instanceof PlayerEntity player) {
             if (state.getHardness(world, pos) != 0.0f) {
                 Hand handUsed = player.getActiveHand() != null
@@ -69,15 +67,13 @@ public class HammerItem extends MiningToolItem {
             }
         }
 
-        return result;
+        return true;
     }
 
     @Override
     public boolean postHit(ItemStack stack,
                            LivingEntity target,
                            LivingEntity attacker) {
-
-        boolean result = super.postHit(stack, target, attacker);
 
         if (!attacker.getWorld().isClient && attacker instanceof PlayerEntity player) {
             Hand handUsed = player.getActiveHand() != null
@@ -86,6 +82,6 @@ public class HammerItem extends MiningToolItem {
             damageAndMaybeBreak(stack, player, handUsed, 2);
         }
 
-        return result;
+        return true;
     }
 }
