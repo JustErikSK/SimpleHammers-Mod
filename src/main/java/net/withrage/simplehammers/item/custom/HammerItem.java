@@ -27,36 +27,63 @@ public class HammerItem extends MiningToolItem {
         this.brokenHammer = brokenHammer;
     }
 
-    private void turnIntoBroken(PlayerEntity player, Hand hand, ItemStack stack) {
-        if (stack.getDamage() >= stack.getMaxDamage()) {
+    private void damageAndMaybeBreak(ItemStack stack,
+                                     PlayerEntity player,
+                                     Hand hand,
+                                     int amount) {
+
+        int current = stack.getDamage();
+        int max = stack.getMaxDamage();
+        int after = current + amount;
+
+        if (after >= max) {
             ItemStack broken = brokenHammer.copy();
 
             if (stack.hasNbt()) {
-                assert stack.getNbt() != null;
                 broken.setNbt(stack.getNbt().copy());
             }
 
             player.setStackInHand(hand, broken);
+            player.sendToolBreakStatus(hand);
+
+        } else {
+            stack.setDamage(after);
         }
     }
 
-    public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, PlayerEntity player) {
-        boolean result = super.postMine(stack, world, state, pos, player);
+    @Override
+    public boolean postMine(ItemStack stack,
+                            World world,
+                            BlockState state,
+                            BlockPos pos,
+                            LivingEntity miner) {
 
-        if (!world.isClient && state.getHardness(world, pos) != 0.0F) {
-            stack.damage(1, player, p -> p.sendToolBreakStatus(player.getActiveHand()));
-            turnIntoBroken(player, player.getActiveHand(), stack);
+        boolean result = super.postMine(stack, world, state, pos, miner);
+
+        if (!world.isClient && miner instanceof PlayerEntity player) {
+            if (state.getHardness(world, pos) != 0.0f) {
+                Hand handUsed = player.getActiveHand() != null
+                        ? player.getActiveHand()
+                        : Hand.MAIN_HAND;
+                damageAndMaybeBreak(stack, player, handUsed, 1);
+            }
         }
 
         return result;
     }
 
-    public boolean postHit(ItemStack stack, LivingEntity target, PlayerEntity attacker) {
+    @Override
+    public boolean postHit(ItemStack stack,
+                           LivingEntity target,
+                           LivingEntity attacker) {
+
         boolean result = super.postHit(stack, target, attacker);
 
-        if (!attacker.getWorld().isClient) {
-            stack.damage(2, attacker, p -> p.sendToolBreakStatus(attacker.getActiveHand()));
-            turnIntoBroken(attacker, attacker.getActiveHand(), stack);
+        if (!attacker.getWorld().isClient && attacker instanceof PlayerEntity player) {
+            Hand handUsed = player.getActiveHand() != null
+                    ? player.getActiveHand()
+                    : Hand.MAIN_HAND;
+            damageAndMaybeBreak(stack, player, handUsed, 2);
         }
 
         return result;
