@@ -16,7 +16,7 @@ public class ModToolMaterial {
     public static final ToolMaterial COPPER = new ToolMaterial() {
         @Override
         public int getDurability() {
-            return 200;
+            return 262;
         }
 
         @Override
@@ -48,7 +48,7 @@ public class ModToolMaterial {
     public static final ToolMaterial EMERALD = new ToolMaterial() {
         @Override
         public int getDurability() {
-            return 1400;
+            return 2084;
         }
 
         @Override
