@@ -36,6 +36,12 @@ public class HammerItem extends MiningToolItem {
         boolean result = super.postMine(stack, world, state, pos, miner);
 
         if (!world.isClient && miner instanceof PlayerEntity player) {
+            if (!state.isIn(BlockTags.PICKAXE_MINEABLE)) {
+                return result;
+            }
+            if (player.isSneaking()) {
+                return result;
+            }
             Direction hitFace = HammerMiningContext.consumeLastHitFace(player);
             breakExtraBlocksAround(pos, world, player, stack, state, hitFace);
         }
@@ -82,7 +88,13 @@ public class HammerItem extends MiningToolItem {
         }
 
         BlockState targetState = world.getBlockState(targetPos);
-        if (targetState.isAir()) return;
+        if (targetState.isAir() || targetState.getHardness(world, targetPos) < 0.0F) return;
+
+        if (!targetState.isIn(BlockTags.PICKAXE_MINEABLE)) return;
+
+        if (!hammerStack.isSuitableFor(targetState)) return;
+
+        if (!player.canHarvest(targetState)) return;
 
         float originHardness = originState.getHardness(world, originPos);
         float targetHardness = targetState.getHardness(world, targetPos);
