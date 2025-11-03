@@ -26,6 +26,13 @@ public class HammerItem extends MiningToolItem {
         super(attackDamage, attackSpeed, material, BlockTags.PICKAXE_MINEABLE, settings);
     }
 
+    private static Direction fallbackFace(PlayerEntity p) {
+        float pitch = p.getPitch();
+        if (pitch > 60.0f) return Direction.DOWN;
+        if (pitch < -60.0f) return Direction.UP;
+        return p.getHorizontalFacing();
+    }
+
     @Override
     public boolean postMine(ItemStack stack,
                             World world,
@@ -43,6 +50,8 @@ public class HammerItem extends MiningToolItem {
                 return result;
             }
             Direction hitFace = HammerMiningContext.consumeLastHitFace(player);
+            if (hitFace == null) hitFace = fallbackFace(player);
+
             breakExtraBlocksAround(pos, world, player, stack, state, hitFace);
         }
 
