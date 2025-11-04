@@ -7,7 +7,8 @@
     "item": "simplehammers:diamond_hammer"
   },
   "result": {
-    "item": "simplehammers:netherite_hammer"
+    "id": "simplehammers:netherite_hammer",
+    "count": 1
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"
