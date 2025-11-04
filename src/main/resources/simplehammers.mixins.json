@@ -3,7 +3,7 @@
 	"package": "net.withrage.simplehammers.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"HammerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
