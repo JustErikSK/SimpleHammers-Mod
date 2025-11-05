@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "minecraft:stick"
+    },
+    "B": {
+      "tag": "minecraft:planks"
+    } ,
+    "C": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "pattern": [
+    "BCB",
+    " A ",
+    " A "
+  ],
+  "result": {
+    "count": 1,
+    "id": "simplehammers:wooden_hammer"
+  }
+}
