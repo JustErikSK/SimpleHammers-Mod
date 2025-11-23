@@ -3,19 +3,19 @@
   "category": "equipment",
   "key": {
     "A": {
-      "item": "simplehammers:hammer_handle"
+      "item": "minecraft:stick"
     },
     "B": {
-      "item": "simplehammers:wooden_hammer_head"
+      "tag": "minecraft:planks"
     }
   },
   "pattern": [
     "  B",
     " A ",
-    "   "
+    "B  "
   ],
   "result": {
     "count": 1,
-    "id": "simplehammers:wooden_hammer"
+    "id": "simplehammers:hammer_handle"
   }
 }
