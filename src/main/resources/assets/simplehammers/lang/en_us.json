@@ -7,6 +7,14 @@
   "item.simplehammers.emerald_hammer": "Emerald Hammer",
   "item.simplehammers.diamond_hammer": "Diamond Hammer",
   "item.simplehammers.netherite_hammer": "Netherite Hammer",
+  "item.simplehammers.hammer_handle": "Hammer Handle",
+  "item.simplehammers.wooden_hammer_head": "Wooden Hammer Head",
+  "item.simplehammers.stone_hammer_head": "Wooden Hammer Head",
+  "item.simplehammers.copper_hammer_head": "Wooden Hammer Head",
+  "item.simplehammers.golden_hammer_head": "Wooden Hammer Head",
+  "item.simplehammers.iron_hammer_head": "Wooden Hammer Head",
+  "item.simplehammers.emerald_hammer_head": "Wooden Hammer Head",
+  "item.simplehammers.diamond_hammer_head": "Wooden Hammer Head",
 
   "itemgroup.simplehammers": "Simple Hammers"
 }

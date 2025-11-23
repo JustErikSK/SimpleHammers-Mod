@@ -1,5 +1,6 @@
 package net.withrage.simplehammers.item.custom;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -15,6 +16,15 @@ public class ModItems {
     public static final Item EMERALD_HAMMER = registerItem("emerald_hammer", new HammerItem(ModToolMaterial.EMERALD, 5, -2.8F, new Item.Settings().maxCount(1).maxDamage(2084)));
     public static final Item DIAMOND_HAMMER = registerItem("diamond_hammer", new HammerItem(ModToolMaterial.DIAMOND, 5, -2.8F, new Item.Settings().maxCount(1).maxDamage(3122)));
     public static final Item NETHERITE_HAMMER = registerItem("netherite_hammer", new HammerItem(ModToolMaterial.NETHERITE, 6, -2.8F, new Item.Settings().maxCount(1).maxDamage(4062)));
+
+    public static final Item HAMMER_HANDLE = registerItem("hammer_handle", new Item(new FabricItemSettings()));
+    public static final Item WOODEN_HAMMER_HEAD = registerItem("wooden_hammer_head", new Item(new FabricItemSettings()));
+    public static final Item STONE_HAMMER_HEAD = registerItem("stone_hammer_head", new Item(new FabricItemSettings()));
+    public static final Item COPPER_HAMMER_HEAD = registerItem("copper_hammer_head", new Item(new FabricItemSettings()));
+    public static final Item GOLDEN_HAMMER_HEAD = registerItem("golden_hammer_head", new Item(new FabricItemSettings()));
+    public static final Item IRON_HAMMER_HEAD = registerItem("iron_hammer_head", new Item(new FabricItemSettings()));
+    public static final Item EMERALD_HAMMER_HEAD = registerItem("emerald_hammer_head", new Item(new FabricItemSettings()));
+    public static final Item DIAMOND_HAMMER_HEAD = registerItem("diamond_hammer_head", new Item(new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(SimpleHammers.MOD_ID, name), item);
