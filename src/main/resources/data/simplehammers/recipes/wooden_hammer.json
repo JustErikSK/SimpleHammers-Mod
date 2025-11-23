@@ -2,19 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "pattern": [
-    "BCB",
+    "  B",
     " A ",
-    " A "
+    "   "
   ],
   "key": {
     "A": {
-      "item": "minecraft:stick"
+      "item": "simplehammers:hammer_handle"
     },
     "B": {
-      "tag": "minecraft:planks"
-    } ,
-    "C": {
-      "tag": "minecraft:logs"
+      "item": "simplehammers:wooden_hammer_head"
     }
   },
   "result": {
