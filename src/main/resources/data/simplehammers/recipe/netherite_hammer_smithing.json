@@ -8,7 +8,7 @@
   },
   "result": {
     "id": "simplehammers:netherite_hammer",
-    "count": 1
+    "count:": 1
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

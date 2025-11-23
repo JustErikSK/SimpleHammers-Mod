@@ -3,19 +3,16 @@
   "category": "equipment",
   "key": {
     "A": {
-      "item": "minecraft:stick"
+      "item": "simplehammers:hammer_handle"
     },
     "B": {
-      "item": "minecraft:cobblestone"
-    } ,
-    "C": {
-      "item": "minecraft:stone"
+      "item": "simplehammers:stone_hammer_head"
     }
   },
   "pattern": [
-    "BCB",
+    "  B",
     " A ",
-    " A "
+    "   "
   ],
   "result": {
     "count": 1,
