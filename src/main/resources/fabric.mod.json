@@ -11,6 +11,7 @@
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/simplehammers",
+        "issues": "https://github.com/JustErikSK/SimpleHammers-Mod/issues",
 		"sources": "https://github.com/JustErikSK/SimpleHammers-Mod"
 	},
 	"license": "MIT",
