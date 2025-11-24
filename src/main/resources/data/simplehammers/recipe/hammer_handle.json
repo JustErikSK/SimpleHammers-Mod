@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "pattern": [
+    "  A",
     " B ",
-    "A  ",
-    "   "
+    "A  "
   ],
   "key": {
-    "A": "simplehammers:hammer_handle",
-    "B": "simplehammers:stone_hammer_head"
+    "A": "#minecraft:planks",
+    "B": "minecraft:stick"
   },
   "result": {
-    "id": "simplehammers:stone_hammer",
+    "id": "simplehammers:hammer_handle",
     "count": 1
   }
 }
