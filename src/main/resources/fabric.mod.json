@@ -10,8 +10,9 @@
         "With Rage Studios"
 	],
 	"contact": {
-		"homepage": "https://modrinth.com/mod/simplehammers",
-		"sources": "https://github.com/JustErikSK/SimpleHammers-Mod"
+        "homepage": "https://modrinth.com/mod/simplehammers",
+        "issues": "https://github.com/JustErikSK/SimpleHammers-Mod/issues",
+        "sources": "https://github.com/JustErikSK/SimpleHammers-Mod"
 	},
 	"license": "MIT",
 	"icon": "assets/simplehammers/simplehammers-icon.png",
