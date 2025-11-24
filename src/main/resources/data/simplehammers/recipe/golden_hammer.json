@@ -2,14 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "pattern": [
-    "BCB",
-    " A ",
-    " A "
+    " B ",
+    "A  ",
+    "   "
   ],
   "key": {
-    "A": "minecraft:stick",
-    "B": "minecraft:gold_ingot",
-    "C": "minecraft:gold_block"
+    "A": "simplehammers:hammer_handle",
+    "B": "simplehammers:golden_hammer_head"
   },
   "result": {
     "id": "simplehammers:golden_hammer",
