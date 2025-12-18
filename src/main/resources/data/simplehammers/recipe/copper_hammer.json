@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " B ",
+    "A  ",
+    "   "
+  ],
+  "key": {
+    "A": "simplehammers:hammer_handle",
+    "B": "simplehammers:copper_hammer_head"
+  },
+  "result": {
+    "id": "simplehammers:copper_hammer",
+    "count": 1
+  }
+}

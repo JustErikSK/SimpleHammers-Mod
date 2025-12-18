@@ -1,0 +1,44 @@
+package net.withrage.simplehammers.item.custom;
+
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
+import net.withrage.simplehammers.SimpleHammers;
+
+public class ModItemGroups {
+
+    public static final ItemGroup SIMPLE_HAMMERS = Registry.register(
+            Registries.ITEM_GROUP,
+            Identifier.of(SimpleHammers.MOD_ID, "simplehammers"),
+            FabricItemGroup.builder()
+                    .displayName(Text.translatable("itemgroup.simplehammers"))
+                    .icon(() -> new ItemStack(ModItems.IRON_HAMMER))
+                    .entries((context, entries) -> {
+                        entries.add(ModItems.WOODEN_HAMMER);
+                        entries.add(ModItems.STONE_HAMMER);
+                        entries.add(ModItems.COPPER_HAMMER);
+                        entries.add(ModItems.GOLDEN_HAMMER);
+                        entries.add(ModItems.IRON_HAMMER);
+                        entries.add(ModItems.EMERALD_HAMMER);
+                        entries.add(ModItems.DIAMOND_HAMMER);
+                        entries.add(ModItems.NETHERITE_HAMMER);
+                        entries.add(ModItems.HAMMER_HANDLE);
+                        entries.add(ModItems.WOODEN_HAMMER_HEAD);
+                        entries.add(ModItems.STONE_HAMMER_HEAD);
+                        entries.add(ModItems.COPPER_HAMMER_HEAD);
+                        entries.add(ModItems.GOLDEN_HAMMER_HEAD);
+                        entries.add(ModItems.IRON_HAMMER_HEAD);
+                        entries.add(ModItems.EMERALD_HAMMER_HEAD);
+                        entries.add(ModItems.DIAMOND_HAMMER_HEAD);
+                    })
+                    .build()
+    );
+
+    public static void registerItemGroups() {
+        SimpleHammers.LOGGER.info("Registering Item Groups for " + SimpleHammers.MOD_ID);
+    }
+}
