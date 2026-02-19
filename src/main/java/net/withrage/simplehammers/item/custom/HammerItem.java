@@ -24,15 +24,6 @@ import java.util.Set;
 
 public class HammerItem extends MiningToolItem {
 
-    private static final Map<Block, BlockState> PATH_STATES = Map.of(
-            Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.getDefaultState(),
-            Blocks.DIRT,        Blocks.DIRT_PATH.getDefaultState(),
-            Blocks.PODZOL,      Blocks.DIRT_PATH.getDefaultState(),
-            Blocks.COARSE_DIRT, Blocks.DIRT_PATH.getDefaultState(),
-            Blocks.MYCELIUM,    Blocks.DIRT_PATH.getDefaultState(),
-            Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.getDefaultState()
-    );
-
     public HammerItem(ToolMaterial material,
                             int attackDamage,
                             float attackSpeed,
@@ -81,7 +72,7 @@ public class HammerItem extends MiningToolItem {
     private void breakExtraBlocksAround(BlockPos origin,
                                         World world,
                                         PlayerEntity player,
-                                        ItemStack excavatorStack,
+                                        ItemStack hammerStack,
                                         BlockState originState,
                                         Direction hitFace) {
 
@@ -99,16 +90,16 @@ public class HammerItem extends MiningToolItem {
         ServerPlayerEntity serverPlayer = (player instanceof ServerPlayerEntity sp) ? sp : null;
         int remaining = player.isCreative()
                 ? Integer.MAX_VALUE
-                : (excavatorStack.getMaxDamage() - excavatorStack.getDamage());
+                : (hammerStack.getMaxDamage() - hammerStack.getDamage());
         for (BlockPos targetPos : targets) {
             if (remaining <= 0) break;
 
-            boolean broke = breakOneExtraBlock(world, player, excavatorStack, origin, originState, targetPos);
+            boolean broke = breakOneExtraBlock(world, player, hammerStack, origin, originState, targetPos);
             if (!broke) continue;
             if (!player.isCreative() && serverPlayer != null) {
-                spendOneDurability(serverPlayer, Hand.MAIN_HAND, excavatorStack);
+                spendOneDurability(serverPlayer, Hand.MAIN_HAND, hammerStack);
                 remaining--;
-                if (excavatorStack.getDamage() >= excavatorStack.getMaxDamage()) {
+                if (hammerStack.getDamage() >= hammerStack.getMaxDamage()) {
                     break;
                 }
             }
@@ -122,7 +113,7 @@ public class HammerItem extends MiningToolItem {
 
     private boolean breakOneExtraBlock(World world,
                                        PlayerEntity player,
-                                       ItemStack excavatorStack,
+                                       ItemStack hammerStack,
                                        BlockPos originPos,
                                        BlockState originState,
                                        BlockPos targetPos) {
@@ -132,8 +123,8 @@ public class HammerItem extends MiningToolItem {
         }
         BlockState targetState = world.getBlockState(targetPos);
         if (targetState.isAir() || targetState.getHardness(world, targetPos) < 0.0F) return false;
-        if (!targetState.isIn(BlockTags.SHOVEL_MINEABLE)) return false;
-        if (!excavatorStack.isSuitableFor(targetState)) return false;
+        if (!targetState.isIn(BlockTags.PICKAXE_MINEABLE)) return false;
+        if (!hammerStack.isSuitableFor(targetState)) return false;
         if (!player.canHarvest(targetState)) return false;
         float originHardness = originState.getHardness(world, originPos);
         float targetHardness = targetState.getHardness(world, targetPos);
@@ -142,7 +133,7 @@ public class HammerItem extends MiningToolItem {
             return false;
         }
         world.breakBlock(targetPos, false, player);
-        Block.dropStacks(targetState, serverWorld, targetPos, world.getBlockEntity(targetPos), player, excavatorStack);
+        Block.dropStacks(targetState, serverWorld, targetPos, world.getBlockEntity(targetPos), player, hammerStack);
         world.setBlockState(targetPos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
         return true;
     }
