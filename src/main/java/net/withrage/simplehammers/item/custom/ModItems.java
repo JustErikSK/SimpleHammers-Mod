@@ -15,9 +15,9 @@ public class ModItems {
     public static final Item IRON_HAMMER = registerItem("iron_hammer", new HammerItem(ModToolMaterial.IRON, 2, -2.8F, new Item.Settings().maxCount(1).maxDamage(506)));
     public static final Item EMERALD_HAMMER = registerItem("emerald_hammer", new HammerItem(ModToolMaterial.EMERALD, 3, -2.8F, new Item.Settings().maxCount(1).maxDamage(2084)));
     public static final Item DIAMOND_HAMMER = registerItem("diamond_hammer", new HammerItem(ModToolMaterial.DIAMOND, 3, -2.8F, new Item.Settings().maxCount(1).maxDamage(3122)));
-    public static final Item NETHERITE_HAMMER = registerItem("netherite_hammer", new HammerItem(ModToolMaterial.NETHERITE, 4, -2.8F, new Item.Settings().maxCount(1).maxDamage(4062)));
+    public static final Item NETHERITE_HAMMER = registerItem("netherite_hammer", new HammerItem(ModToolMaterial.NETHERITE, 4, -2.8F, new Item.Settings().maxCount(1).maxDamage(4062).fireproof()));
 
-    public static final Item HAMMER_HANDLE = registerItem("hammer_handle", new Item(new FabricItemSettings()));
+    public static final Item WOODEN_HANDLE = registerItem("wooden_handle", new Item(new FabricItemSettings()));
     public static final Item WOODEN_HAMMER_HEAD = registerItem("wooden_hammer_head", new Item(new FabricItemSettings()));
     public static final Item STONE_HAMMER_HEAD = registerItem("stone_hammer_head", new Item(new FabricItemSettings()));
     public static final Item COPPER_HAMMER_HEAD = registerItem("copper_hammer_head", new Item(new FabricItemSettings()));

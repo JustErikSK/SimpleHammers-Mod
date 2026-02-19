@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "simplehammers:item/hammer_handle"
+    "layer0": "simplehammers:item/wooden_handle"
   }
 }

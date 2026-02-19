@@ -1,6 +1,7 @@
 package net.withrage.simplehammers;
 
 import net.fabricmc.api.ModInitializer;
+import net.withrage.simplehammers.config.SimpleHammersConfig;
 import net.withrage.simplehammers.item.custom.HammerEvents;
 import net.withrage.simplehammers.item.custom.ModItemGroups;
 import net.withrage.simplehammers.item.custom.ModItems;
@@ -13,7 +14,7 @@ public class SimpleHammers implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
+		SimpleHammersConfig.load();
         ModItems.registerModItems();
         ModItemGroups.registerItemGroups();
         HammerEvents.register();
