@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "A": {
-      "item": "simplehammers:hammer_handle"
+      "tag": "simplehammers:handles"
     },
     "B": {
       "item": "simplehammers:iron_hammer_head"
