@@ -17,6 +17,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.withrage.simplehammers.config.SimpleHammersConfig;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -55,7 +56,7 @@ public class HammerItem extends MiningToolItem {
 
         if (!world.isClient() && miner instanceof PlayerEntity player) {
             if (!state.isIn(BlockTags.PICKAXE_MINEABLE)) return result;
-            if (player.isSneaking()) return result;
+            if (SimpleHammersConfig.sneakMines1x1 && player.isSneaking()) return result;
 
             Direction hitFace = HammerMiningContext.consumeLastHitFace(player);
             if (hitFace == null) hitFace = fallbackFace(player);
