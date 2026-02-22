@@ -11,79 +11,16 @@ import net.withrage.simplehammers.SimpleHammers;
 import java.util.function.Function;
 
 public class ModItems {
-    public static final Item WOODEN_HAMMER   = registerHammer(
-            "wooden_hammer",
-            ModToolMaterial.WOOD,
-            1,
-            -2.8f,
-            108,
-            false
-    );
+    public static final Item WOODEN_HAMMER = registerHammer("wooden_hammer", ModToolMaterial.WOOD, 1, -2.8f, false);
+    public static final Item STONE_HAMMER = registerHammer("stone_hammer", ModToolMaterial.STONE, 1, -2.8f, false);
+    public static final Item COPPER_HAMMER = registerHammer("copper_hammer", ModToolMaterial.COPPER, 1, -2.8f, false);
+    public static final Item GOLDEN_HAMMER = registerHammer("golden_hammer", ModToolMaterial.GOLD, 1, -2.8f, false);
+    public static final Item IRON_HAMMER = registerHammer("iron_hammer", ModToolMaterial.IRON, 2, -2.8f, false);
+    public static final Item EMERALD_HAMMER = registerHammer("emerald_hammer", ModToolMaterial.EMERALD, 3, -2.8f, false);
+    public static final Item DIAMOND_HAMMER = registerHammer("diamond_hammer", ModToolMaterial.DIAMOND, 3, -2.8f, false);
+    public static final Item NETHERITE_HAMMER = registerHammer("netherite_hammer", ModToolMaterial.NETHERITE, 4, -2.8f, true);
 
-    public static final Item STONE_HAMMER    = registerHammer(
-            "stone_hammer",
-            ModToolMaterial.STONE,
-            1,
-            -2.8f,
-            262,
-            false
-    );
-
-    public static final Item COPPER_HAMMER   = registerHammer(
-            "copper_hammer",
-            ModToolMaterial.COPPER,
-            1,
-            -2.8f,
-            380,
-            false
-    );
-
-    public static final Item GOLDEN_HAMMER   = registerHammer(
-            "golden_hammer",
-            ModToolMaterial.GOLD,
-            1,
-            -2.8f,
-            64,
-            false
-    );
-
-    public static final Item IRON_HAMMER     = registerHammer(
-            "iron_hammer",
-            ModToolMaterial.IRON,
-            2,
-            -2.8f,
-            506,
-            false
-    );
-
-    public static final Item EMERALD_HAMMER  = registerHammer(
-            "emerald_hammer",
-            ModToolMaterial.EMERALD,
-            3,
-            -2.8f,
-            2084,
-            false
-    );
-
-    public static final Item DIAMOND_HAMMER  = registerHammer(
-            "diamond_hammer",
-            ModToolMaterial.DIAMOND,
-            3,
-            -2.8f,
-            3122,
-            false
-    );
-
-    public static final Item NETHERITE_HAMMER = registerHammer(
-            "netherite_hammer",
-            ModToolMaterial.NETHERITE,
-            4,
-            -2.8f,
-            4062,
-            true
-    );
-
-    public static final Item HAMMER_HANDLE = registerItem("hammer_handle", Item::new);
+    public static final Item WOODEN_HANDLE = registerItem("wooden_handle", Item::new);
     public static final Item WOODEN_HAMMER_HEAD = registerItem("wooden_hammer_head", Item::new);
     public static final Item STONE_HAMMER_HEAD = registerItem("stone_hammer_head", Item::new);
     public static final Item COPPER_HAMMER_HEAD = registerItem("copper_hammer_head", Item::new);
@@ -96,7 +33,6 @@ public class ModItems {
                                        ToolMaterial material,
                                        int attackDamage,
                                        float attackSpeed,
-                                       int durability,
                                        boolean fireproof) {
 
         Identifier id = Identifier.of(SimpleHammers.MOD_ID, name);
@@ -117,7 +53,6 @@ public class ModItems {
         Item.Settings settings = new Item.Settings()
                 .registryKey(key)
                 .maxCount(1)
-                .maxDamage(durability)
                 .enchantable(enchantability)
                 .repairable(material.repairItems());
 

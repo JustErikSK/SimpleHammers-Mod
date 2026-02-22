@@ -26,7 +26,7 @@ public class ModItemGroups {
                         entries.add(ModItems.EMERALD_HAMMER);
                         entries.add(ModItems.DIAMOND_HAMMER);
                         entries.add(ModItems.NETHERITE_HAMMER);
-                        entries.add(ModItems.HAMMER_HANDLE);
+                        entries.add(ModItems.WOODEN_HANDLE);
                         entries.add(ModItems.WOODEN_HAMMER_HEAD);
                         entries.add(ModItems.STONE_HAMMER_HEAD);
                         entries.add(ModItems.COPPER_HAMMER_HEAD);
