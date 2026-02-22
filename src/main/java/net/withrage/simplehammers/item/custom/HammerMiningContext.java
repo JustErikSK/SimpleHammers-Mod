@@ -7,13 +7,10 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 public class HammerMiningContext {
-
     private static final Map<PlayerEntity, Direction> LAST_FACE = new WeakHashMap<>();
-
     public static void setLastHitFace(PlayerEntity player, Direction face) {
         LAST_FACE.put(player, face);
     }
-
     public static Direction consumeLastHitFace(PlayerEntity player) {
         return LAST_FACE.remove(player);
     }

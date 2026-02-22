@@ -7,7 +7,6 @@ import net.minecraft.util.hit.HitResult;
 
 public class HammerEvents {
     public static void register() {
-
         PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, be) -> {
             if (!(player instanceof ServerPlayerEntity sp)) return true;
             HitResult hr = sp.raycast(5.0D, 0.0F, false);
