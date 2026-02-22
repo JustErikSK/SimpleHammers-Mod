@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "simplehammers:item/hammer_handle"
+    "model": "simplehammers:item/wooden_handle"
   }
 }
