@@ -13,7 +13,12 @@
     "crafted_netherite_hammer": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "recipe_id": "simplehammers:netherite_hammer"
+        "items": [
+          {
+            "items": ["simplehammers:netherite_hammer"],
+            "count": { "min": 1 }
+          }
+        ]
       }
     }
   },
