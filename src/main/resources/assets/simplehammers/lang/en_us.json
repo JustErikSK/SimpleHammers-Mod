@@ -9,12 +9,25 @@
   "item.simplehammers.netherite_hammer": "Netherite Hammer",
   "item.simplehammers.wooden_handle": "Wooden Handle",
   "item.simplehammers.wooden_hammer_head": "Wooden Hammer Head",
-  "item.simplehammers.stone_hammer_head": "Wooden Hammer Head",
-  "item.simplehammers.copper_hammer_head": "Wooden Hammer Head",
-  "item.simplehammers.golden_hammer_head": "Wooden Hammer Head",
-  "item.simplehammers.iron_hammer_head": "Wooden Hammer Head",
-  "item.simplehammers.emerald_hammer_head": "Wooden Hammer Head",
-  "item.simplehammers.diamond_hammer_head": "Wooden Hammer Head",
+  "item.simplehammers.stone_hammer_head": "Stone Hammer Head",
+  "item.simplehammers.copper_hammer_head": "Copper Hammer Head",
+  "item.simplehammers.golden_hammer_head": "Golden Hammer Head",
+  "item.simplehammers.iron_hammer_head": "Iron Hammer Head",
+  "item.simplehammers.emerald_hammer_head": "Emerald Hammer Head",
+  "item.simplehammers.diamond_hammer_head": "Diamond Hammer Head",
+
+  "item.simplehammers.all_hammers": "Hammer Advancement Trophy",
+
+  "advancements.simplehammers.all_hammers.title": "Master Smith",
+  "advancements.simplehammers.emerald_hammer.title": "Emerald Engineering",
+  "advancements.simplehammers.netherite_hammer.title": "Heavy Metal",
+
+  "advancements.simplehammers.all_hammers.desc": "Craft every hammer!",
+  "advancements.simplehammers.emerald_hammer.desc": "Craft an Emerald Hammer.",
+  "advancements.simplehammers.netherite_hammer.desc": "Make a Netherite Hammer.",
+
+  "advancements.simplehammers.root.title": "Simple Hammers",
+  "advancements.simplehammers.root.desc": "Make powerful hammers that can mine 3x3!",
 
   "itemgroup.simplehammers": "Simple Hammers"
 }

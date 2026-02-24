@@ -1,0 +1,23 @@
+{
+  "parent": "simplehammers:root",
+  "display": {
+    "icon": { "id": "simplehammers:netherite_hammer" },
+    "title": { "translate": "advancements.simplehammers.netherite_hammer.title" },
+    "description": { "translate": "advancements.simplehammers.netherite_hammer.desc" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "crafted_netherite_hammer": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "simplehammers:netherite_hammer"
+      }
+    }
+  },
+  "requirements": [
+    ["crafted_netherite_hammer"]
+  ]
+}

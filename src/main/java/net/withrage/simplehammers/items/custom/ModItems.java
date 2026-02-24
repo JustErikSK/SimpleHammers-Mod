@@ -27,6 +27,8 @@ public class ModItems {
     public static final Item EMERALD_HAMMER_HEAD = registerItem("emerald_hammer_head", new Item(new Item.Settings()));
     public static final Item DIAMOND_HAMMER_HEAD = registerItem("diamond_hammer_head", new Item(new Item.Settings()));
 
+    public static final Item HAMMER_ADV_TROPHY = registerItem("all_hammers", new Item(new Item.Settings()));
+
     private static Item registerHammer(String name,
                                        ToolMaterial material,
                                        int attackDamage,
