@@ -27,6 +27,8 @@ public class ModItems {
     public static final Item EMERALD_HAMMER_HEAD = registerItem("emerald_hammer_head", new Item(new FabricItemSettings()));
     public static final Item DIAMOND_HAMMER_HEAD = registerItem("diamond_hammer_head", new Item(new FabricItemSettings()));
 
+    public static final Item HAMMER_ADV_TROPHY = registerItem("all_hammers", new Item(new FabricItemSettings()));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(SimpleHammers.MOD_ID, name), item);
     }
