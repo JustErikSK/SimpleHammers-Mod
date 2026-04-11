@@ -4,7 +4,7 @@
     "icon": { "id": "simplehammers:all_hammers" },
     "title": { "translate": "advancements.simplehammers.all_hammers.title" },
     "description": { "translate": "advancements.simplehammers.all_hammers.desc" },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
