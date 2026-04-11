@@ -32,6 +32,8 @@ public class HammerItem extends MiningToolItem {
         );
     }
 
+    private static boolean breakingExtraBlocks = false;
+
     private static Direction fallbackFace(PlayerEntity p) {
         float pitch = p.getPitch();
         if (pitch > 60f)  return Direction.DOWN;
@@ -51,17 +53,31 @@ public class HammerItem extends MiningToolItem {
     }
 
     @Override
-    public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
+    public boolean postMine(ItemStack stack,
+                            World world,
+                            BlockState state,
+                            BlockPos pos,
+                            LivingEntity miner) {
+
         boolean result = super.postMine(stack, world, state, pos, miner);
 
-        if (!world.isClient() && miner instanceof PlayerEntity player) {
-            if (!state.isIn(BlockTags.PICKAXE_MINEABLE)) return result;
-            if (SimpleHammersConfig.sneakMines1x1 && player.isSneaking()) return result;
+        if (breakingExtraBlocks) return result;
+        if (world.isClient) return result;
+        if (!(miner instanceof PlayerEntity player)) return result;
 
-            Direction hitFace = HammerMiningContext.consumeLastHitFace(player);
-            if (hitFace == null) hitFace = fallbackFace(player);
-            breakExtraBlocksAround(pos, world, player, stack, state, hitFace);
+        if (!state.isIn(BlockTags.PICKAXE_MINEABLE)) return result;
+        if (SimpleHammersConfig.sneakMines1x1 && player.isSneaking()) return result;
+
+        Direction hitFace = HammerMiningContext.consumeLastHitFace(player);
+        if (hitFace == null) hitFace = fallbackFace(player);
+
+        breakingExtraBlocks = true;
+        try {
+            breakExtraBlocksAround(pos, world, player, stack, hitFace);
+        } finally {
+            breakingExtraBlocks = false;
         }
+
         return result;
     }
 
@@ -69,11 +85,11 @@ public class HammerItem extends MiningToolItem {
                                         World world,
                                         PlayerEntity player,
                                         ItemStack hammerStack,
-                                        BlockState originState,
                                         Direction hitFace) {
 
         Plane plane = getPlaneFromHitFace(hitFace);
         Set<BlockPos> targets = new HashSet<>();
+
         for (int ox = -1; ox <= 1; ox++) {
             for (int oy = -1; oy <= 1; oy++) {
                 for (int oz = -1; oz <= 1; oz++) {
@@ -83,55 +99,25 @@ public class HammerItem extends MiningToolItem {
                 }
             }
         }
-        ServerPlayerEntity serverPlayer = (player instanceof ServerPlayerEntity sp) ? sp : null;
-        int remaining = player.isCreative()
-                ? Integer.MAX_VALUE
-                : (hammerStack.getMaxDamage() - hammerStack.getDamage());
+        if (!(player instanceof ServerPlayerEntity serverPlayer)) return;
         for (BlockPos targetPos : targets) {
-            if (remaining <= 0) break;
-
-            boolean broke = breakOneExtraBlock(world, player, hammerStack, origin, originState, targetPos);
-            if (!broke) continue;
-            if (!player.isCreative() && serverPlayer != null) {
-                spendOneDurability(serverPlayer, Hand.MAIN_HAND, hammerStack);
-                remaining--;
-                if (hammerStack.getDamage() >= hammerStack.getMaxDamage()) {
-                    break;
-                }
-            }
+            if (hammerStack.getDamage() >= hammerStack.getMaxDamage() - 1) break;
+            BlockState targetState = world.getBlockState(targetPos);
+            if (!canBreakExtraBlock(world, player, hammerStack, targetState, targetPos)) continue;
+            serverPlayer.interactionManager.tryBreakBlock(targetPos);
         }
     }
 
-    private static void spendOneDurability(ServerPlayerEntity player, Hand hand, ItemStack stack) {
-        if (player.isCreative()) return;
-        EquipmentSlot slot = (hand == Hand.MAIN_HAND) ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
-        stack.damage(1, player, slot);
-    }
-
-    private boolean breakOneExtraBlock(World world,
+    private boolean canBreakExtraBlock(World world,
                                        PlayerEntity player,
                                        ItemStack hammerStack,
-                                       BlockPos originPos,
-                                       BlockState originState,
+                                       BlockState targetState,
                                        BlockPos targetPos) {
-
-        if (!(world instanceof ServerWorld serverWorld)) {
-            return false;
-        }
-        BlockState targetState = world.getBlockState(targetPos);
-        if (targetState.isAir() || targetState.getHardness(world, targetPos) < 0.0F) return false;
+        if (targetState.isAir()) return false;
+        if (targetState.getHardness(world, targetPos) < 0.0F) return false;
         if (!targetState.isIn(BlockTags.PICKAXE_MINEABLE)) return false;
         if (!hammerStack.isSuitableFor(targetState)) return false;
         if (!player.canHarvest(targetState)) return false;
-        float originHardness = originState.getHardness(world, originPos);
-        float targetHardness = targetState.getHardness(world, targetPos);
-        if (targetHardness < 0) return false;
-        if (originHardness >= 0 && targetHardness > originHardness + 0.5f) {
-            return false;
-        }
-        world.breakBlock(targetPos, false, player);
-        Block.dropStacks(targetState, serverWorld, targetPos, world.getBlockEntity(targetPos), player, hammerStack);
-        world.setBlockState(targetPos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
         return true;
     }
 
