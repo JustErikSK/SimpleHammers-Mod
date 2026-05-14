@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": { "id": "simplehammers:iron_hammer" },
+    "title": { "translate": "advancements.simplehammers.root.title" },
+    "description": { "translate": "advancements.simplehammers.root.desc" },
+    "background": "minecraft:textures/block/stone.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "tick": { "trigger": "minecraft:tick" }
+  }
+}
