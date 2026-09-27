@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "AA ",
+    "AAA",
+    " AA"
+  ],
+  "key": {
+    "A": "minecraft:diamond"
+  },
+  "result": {
+    "id": "simplehammers:diamond_hammer_head",
+    "count": 1
+  }
+}
