@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "simplehammers:item/wooden_hammer_gui"
+  }
+}
