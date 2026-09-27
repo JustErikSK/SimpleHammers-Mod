@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " B ",
+    "A  ",
+    "   "
+  ],
+  "key": {
+    "A": "#simplehammers:handles",
+    "B": "simplehammers:golden_hammer_head"
+  },
+  "result": {
+    "id": "simplehammers:golden_hammer",
+    "count": 1
+  }
+}
