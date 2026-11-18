@@ -66,7 +66,9 @@ public class HammerItem extends MiningToolItem {
         if (world.isClient) return result;
         if (!(miner instanceof PlayerEntity player)) return result;
 
-        if (!state.isIn(BlockTags.PICKAXE_MINEABLE)) return result;
+        if (!state.isIn(BlockTags.PICKAXE_MINEABLE) && !state.isIn(GLASS_MINEABLE)) {
+            return result;
+        }
         if (SimpleHammersConfig.sneakMines1x1 && player.isSneaking()) return result;
 
         Direction hitFace = HammerMiningContext.consumeLastHitFace(player);
@@ -116,9 +118,13 @@ public class HammerItem extends MiningToolItem {
                                        BlockPos targetPos) {
         if (targetState.isAir()) return false;
         if (targetState.getHardness(world, targetPos) < 0.0F) return false;
-        if (!targetState.isIn(BlockTags.PICKAXE_MINEABLE)) return false;
-        if (!hammerStack.isSuitableFor(targetState)) return false;
-        if (!player.canHarvest(targetState)) return false;
+
+        boolean isGlass = targetState.isIn(GLASS_MINEABLE);
+
+        if (!targetState.isIn(BlockTags.PICKAXE_MINEABLE) && !isGlass) return false;
+        if (!isGlass && !hammerStack.isSuitableFor(targetState)) return false;
+        if (!isGlass && !player.canHarvest(targetState)) return false;
+
         return true;
     }
 
