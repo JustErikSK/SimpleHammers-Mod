@@ -2,18 +2,17 @@ package net.withrage.simplehammers.items.custom;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -33,6 +32,8 @@ public class HammerItem extends MiningToolItem {
     }
 
     private static boolean breakingExtraBlocks = false;
+    private static final TagKey<Block> GLASS_MINEABLE =
+            TagKey.of(RegistryKeys.BLOCK, Identifier.of("simplehammers", "glass_mineable"));
 
     private static Direction fallbackFace(PlayerEntity p) {
         float pitch = p.getPitch();
@@ -65,7 +66,9 @@ public class HammerItem extends MiningToolItem {
         if (world.isClient) return result;
         if (!(miner instanceof PlayerEntity player)) return result;
 
-        if (!state.isIn(BlockTags.PICKAXE_MINEABLE)) return result;
+        if (!state.isIn(BlockTags.PICKAXE_MINEABLE) && !state.isIn(GLASS_MINEABLE)) {
+            return result;
+        }
         if (SimpleHammersConfig.sneakMines1x1 && player.isSneaking()) return result;
 
         Direction hitFace = HammerMiningContext.consumeLastHitFace(player);
@@ -115,9 +118,13 @@ public class HammerItem extends MiningToolItem {
                                        BlockPos targetPos) {
         if (targetState.isAir()) return false;
         if (targetState.getHardness(world, targetPos) < 0.0F) return false;
-        if (!targetState.isIn(BlockTags.PICKAXE_MINEABLE)) return false;
-        if (!hammerStack.isSuitableFor(targetState)) return false;
-        if (!player.canHarvest(targetState)) return false;
+
+        boolean isGlass = targetState.isIn(GLASS_MINEABLE);
+
+        if (!targetState.isIn(BlockTags.PICKAXE_MINEABLE) && !isGlass) return false;
+        if (!isGlass && !hammerStack.isSuitableFor(targetState)) return false;
+        if (!isGlass && !player.canHarvest(targetState)) return false;
+
         return true;
     }
 
