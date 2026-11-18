@@ -1,5 +1,6 @@
 package net.withrage.simplehammers.item.custom;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -7,8 +8,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -27,6 +31,9 @@ public class HammerItem extends MiningToolItem {
     }
 
     private static boolean breakingExtraBlocks = false;
+
+    private static final TagKey<Block> GLASS_MINEABLE =
+            TagKey.of(RegistryKeys.BLOCK, new Identifier("simplehammers", "glass_mineable"));
 
     private static Direction fallbackFace(PlayerEntity p) {
         float pitch = p.getPitch();
