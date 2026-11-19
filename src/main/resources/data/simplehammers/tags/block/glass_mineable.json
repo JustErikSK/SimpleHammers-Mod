@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:impermeable",
+    "minecraft:glass",
+    "minecraft:tinted_glass"
+  ]
+}
