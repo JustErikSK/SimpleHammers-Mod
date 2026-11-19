@@ -3,8 +3,9 @@ loaderVersion="[64,)"
 license="MIT"
 [[mods]]
 modId="simplehammers"
-version="1.0.5"
+version="1.0.6"
 displayName="Simple Hammers"
+logoFile="simplehammers-icon.png"
 authors="JustErikSK, Satorisek, With Rage Studios"
 description='''Mine faster and wider with Simple Hammers that break 3x3 areas of blocks at once.'''
 [[dependencies.simplehammers]]
